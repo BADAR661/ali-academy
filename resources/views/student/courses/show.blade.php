@@ -88,16 +88,15 @@
                                         <th class="ps-4 border-0 rounded-start">Assessment Title</th>
                                         <th class="text-center border-0">Score Obtained</th>
                                         <th class="text-center border-0">Max Possible</th>
-                                        <th class="text-center border-0">Performance</th>
+                                        <th class="text-center border-0">Grade</th>
                                         <th class="border-0 rounded-end">Teacher Feedback</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($enrollment->grades as $grade)
                                     @php
-                                        $percentage = $grade->max_score > 0 ? ($grade->score / $grade->max_score) * 100 : 0;
-                                        $color = $percentage >= 80 ? 'success' : ($percentage >= 50 ? 'warning' : 'danger');
-                                        $icon = $percentage >= 80 ? 'check-circle' : ($percentage >= 50 ? 'minus-circle' : 'exclamation-circle');
+                                        $color = $grade->is_passed ? 'success' : 'danger';
+                                        $icon = $grade->is_passed ? 'check-circle' : 'exclamation-circle';
                                     @endphp
                                     <tr class="border-bottom border-light">
                                         <td class="fw-bold ps-4 py-3 text-dark">{{ $grade->assessment_name }}</td>
@@ -105,7 +104,7 @@
                                         <td class="text-center py-3 text-muted">{{ $grade->max_score }}</td>
                                         <td class="text-center py-3">
                                             <span class="badge bg-{{ $color }}-soft text-{{ $color }} rounded-pill px-3 py-2">
-                                                <i class="fas fa-{{ $icon }} me-1"></i> {{ round($percentage) }}%
+                                                <i class="fas fa-{{ $icon }} me-1"></i> {{ $grade->letter_grade }}
                                             </span>
                                         </td>
                                         <td class="py-3 text-secondary small fst-italic" style="white-space: pre-line;">
