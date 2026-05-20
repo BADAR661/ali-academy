@@ -108,7 +108,7 @@
                                                 <i class="fas fa-{{ $icon }} me-1"></i> {{ round($percentage) }}%
                                             </span>
                                         </td>
-                                        <td class="py-3 text-secondary small fst-italic">
+                                        <td class="py-3 text-secondary small fst-italic" style="white-space: pre-line;">
                                             @if($grade->feedback)
                                                 "{{ $grade->feedback }}"
                                             @else

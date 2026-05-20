@@ -223,7 +223,8 @@
                                 <thead class="bg-light text-uppercase small text-muted">
                                     <tr>
                                         <th class="ps-4 py-3 border-0">Student</th>
-                                        <th class="py-3 border-0" style="width: 250px;">Score Obtained</th>
+                                        <th class="py-3 border-0" style="width: 220px;">Score Obtained</th>
+                                        <th class="py-3 border-0">Teacher Feedback</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -235,6 +236,13 @@
                                                 <input type="number" name="grades[{{ $enrollment->id }}]" class="form-control" min="0" step="0.5" placeholder="0">
                                                 <span class="input-group-text bg-white text-muted">/ <span class="max-score-display">100</span></span>
                                             </div>
+                                        </td>
+                                        <td class="py-3">
+                                            <textarea
+                                                name="feedback[{{ $enrollment->id }}]"
+                                                class="form-control"
+                                                rows="2"
+                                                placeholder="Add short feedback for this student"></textarea>
                                         </td>
                                     </tr>
                                     @endforeach
